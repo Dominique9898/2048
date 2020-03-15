@@ -136,3 +136,11 @@ function nomove( board ){
 function updateScore(score) {
   $('#score').text( score );
 }
+$("body").css({
+  position: "fixed",
+  width: "100%"
+});
+document.body.addEventListener("touchmove", bodyScroll, false);
+function bodyScroll(event) {
+  event.preventDefault();
+}

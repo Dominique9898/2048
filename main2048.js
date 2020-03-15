@@ -176,14 +176,12 @@ $(document).keydown( function( event ){
 
 //捕捉触摸事件
 document.addEventListener('touchstart',function (event) {
-  event.preventDefault();
   starty = event.touches[0].pageY;
   startx = event.touches[0].pageX;
 });
 
 document.addEventListener('touchend',function (event) {
   // *用户进行点击也会产生一次touchend事件,则需要对变化后的x,y的值做出判断,如果小于摸一个值视为点击
-  event.preventDefault();
   endx = event.changedTouches[0].pageX;
   endy = event.changedTouches[0].pageY;
 
