@@ -136,11 +136,28 @@ function nomove( board ){
 function updateScore(score) {
   $('#score').text( score );
 }
-$("body").css({
-  position: "fixed",
-  width: "100%"
-});
-document.body.addEventListener("touchmove", bodyScroll, false);
-function bodyScroll(event) {
-  event.preventDefault();
+
+
+window.οnlοad=function () {
+  document.addEventListener('touchstart',function (event) {
+    if(event.touches.length>1){
+      event.preventDefault();
+    }
+  })
+  var lastTouchEnd=0;
+  document.addEventListener('touchend',function (event) {
+    var now=(new Date()).getTime();
+    if(now-lastTouchEnd<=300){
+      event.preventDefault();
+    }
+    lastTouchEnd=now;
+  },false)
 }
+
+var handle = function(event){
+  event.preventDefault(); //阻止元素发生默认的行为
+}
+document.body.addEventListener('touchmove',handle,false);//添加监听事件--页面不可滚动
+document.body.removeEventListener('touchmove',handle,false);//移除监听事件--页面恢复可滚动
+
+
